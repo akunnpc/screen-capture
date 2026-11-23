@@ -42,11 +42,16 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
+      # Runner ubuntu-latest sudah membawa Android SDK (ANDROID_HOME),
+      # jadi tidak perlu action setup-android. Cukup terima lisensi + pasang platform 36.
       - name: Pasang platform 36 dan build-tools
-        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+        run: |
+          yes | sdkmanager --licenses > /dev/null || true
+          sdkmanager "platforms;android-36" "build-tools;36.0.0" || {
+            echo "Percobaan pertama gagal, coba sekali lagi..."
+            sleep 10
+            sdkmanager "platforms;android-36" "build-tools;36.0.0"
+          }
 
       # Gradle dipasang langsung (zip tidak membawa gradle-wrapper.jar).
       # Versi 8.13 = pasangan resmi AGP 8.13.x.
@@ -70,4 +75,3 @@ jobs:
       - name: Unit test
         continue-on-error: true
         run: gradle --no-daemon testDebugUnitTest --stacktrace
-        
