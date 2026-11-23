@@ -1,0 +1,71 @@
+feature,area,priority,original,clone,notes
+Sign in with Google,account,must,yes,no,langkah pertama di tur pemakaian
+Batas tier gratis (3 scene / 7 elemen / 1 broadcast / 1 koneksi event),account,must,yes,no,angka dari halaman harga
+Hapus akun dan data,account,must,yes,no,halaman delete-account ada; wajib untuk UU PDP dan kebijakan toko aplikasi
+Bahasa Indonesia dan Inggris,settings,should,yes,no,
+Tur pemakaian pertama kali,onboarding,should,yes,no,tur web 20 langkah (versi desktop); versi Android belum terlihat
+Update dari dalam app setelah instal USB,updates,should,yes,no,disebut di situs; cara kerja teknisnya tebakan
+Buat scene dengan kanvas 9:16 atau 16:9,overlay,must,yes,no,
+Mulai dari kanvas kosong atau template gratis,overlay,must,yes,no,
+Banyak scene dan pindah antar scene,overlay,must,yes,no,gratis maksimal 3
+Elemen statis: teks gambar video bentuk pembatas,overlay,must,yes,no,
+Elemen kamera,overlay,must,yes,no,
+Elemen jendela atau game capture,overlay,skip,yes,skip,konsep desktop; di Android diganti tangkap layar (Mode B)
+Elemen embed URL,overlay,could,yes,no,
+Teks berjalan,overlay,should,yes,no,
+Elemen subtitle,overlay,could,yes,no,
+Elemen permintaan lagu,overlay,could,yes,no,tebakan: terkait notifikasi musik di versi penuh
+Elemen lirik,overlay,skip,yes,skip,lirik berlisensi; tidak boleh dikloning
+Teks dinamis dan avatar,overlay,should,yes,no,
+Widget pesan chat,overlay,must,yes,no,
+Widget event feed,overlay,must,yes,no,
+Counter dan combo counter,overlay,should,yes,no,
+Progress bar,overlay,should,yes,no,
+Leaderboard pendukung teratas,overlay,should,yes,no,
+Set stiker,overlay,could,yes,no,
+Panel layer (kunci sembunyi grup),overlay,must,yes,no,
+Properti elemen (ukuran posisi radius opacity),overlay,must,yes,no,
+Event binding (sumber event filter ambang animasi masuk),overlay,must,yes,no,
+Animasi masuk elemen,overlay,should,yes,no,
+Transisi scene (morph stinger),overlay,could,yes,no,
+Hotkey scene,overlay,skip,yes,skip,konsep keyboard desktop
+Filter wajah dan efek kamera,overlay,could,yes,no,
+Grid snap dan ruler,overlay,could,yes,no,
+Simpan sebagai preset dan duplikat scene,overlay,should,yes,no,
+Ekspor URL browser source,overlay,could,yes,no,untuk OBS desktop; tidak relevan di Android kecuali ada pendamping desktop
+Siaran langsung dari HP dengan encoder sendiri (Mode B),broadcast,must,yes,partial,"kode ditulis (kirim-layar), belum dikompilasi atau diuji di HP"
+Overlay di atas game (Mode A),broadcast,must,yes,no,siaran lewat app platform sendiri
+Custom RTMP ingest,broadcast,must,yes,partial,URL rtmp/rtmps dari kolom isian; belum diuji
+Tempel URL ingest dan stream key,broadcast,must,yes,partial,TikTok dan Instagram memberi kunci baru tiap siaran; satu kolom URL penuh; belum diuji
+Login YouTube via OAuth dan stream key otomatis,broadcast,should,yes,no,
+Multistream ke beberapa tujuan,broadcast,should,yes,no,Pro; mulai dari 1 tujuan
+Dua jalur encode H.265 dan H.264,broadcast,could,yes,no,klaim kodek per platform harus diverifikasi; mulai 1 encode H.264
+Cek bandwidth upload sebelum live,broadcast,should,yes,no,
+Stream key terenkripsi di perangkat,broadcast,must,yes,no,sementara teks biasa di penyimpanan privat; rencana Android Keystore
+Rekam output siaran,broadcast,should,yes,partial,rekam MP4 lokal bisa tanpa siaran; belum diuji
+Mic dicampur dengan suara voice chat game (versi penuh),audio,should,yes,partial,"tebakan: butuh izin khusus yang diberikan lewat USB; MixAudioSource (Android 10+); mic bersama app voice chat lain butuh izin Aksesibilitas, belum ada"
+Kamera virtual,broadcast,skip,yes,skip,konsep desktop
+Mirroring AirPlay iOS ke Android,broadcast,skip,yes,skip,proyek terpisah berlisensi GPL-3
+Event YouTube (chat dan follow),events,must,yes,no,API resmi YouTube Data
+Event Twitch (chat gift follow),events,should,yes,no,API resmi; verifikasi saat build
+Event Kick,events,could,yes,no,verifikasi API resmi saat build
+Event Facebook (chat dan like),events,could,yes,no,terbatas; verifikasi saat build
+Event TikTok (chat gift follow like share),events,skip,yes,skip,tidak ada API publik resmi; semua pustaka non-resmi
+Event Instagram Live,events,skip,no,skip,Meta tidak membuka komentar Instagram Live; aslinya juga hanya satu arah
+Notifikasi donasi lewat webhook bertanda tangan,events,should,yes,no,7 layanan; mulai dari Saweria dan Trakteer
+Dock event feed dan statistik sesi,events,must,yes,no,
+Catat event dan ekspor CSV atau JSON,events,should,yes,no,
+Riwayat rekaman dan analitik sesi,analytics,should,yes,no,top gifter chatter liker lebih kaya di TikTok
+Langganan Pro 30 hari dan 360 hari dalam Rupiah,billing,must,yes,no,
+Pembayaran QRIS e-wallet dan VA,billing,must,yes,no,metode asli tidak terlihat; pengganti Midtrans atau Xendit
+Beli Streamingin Coin (SC),billing,should,yes,no,
+Voucher referral,billing,could,yes,no,tebakan: cara kerja komisi tidak dijelaskan
+Pustaka SFX dan media cloud (Pro),media,should,yes,no,
+Template resmi gratis,store,must,yes,no,
+Jelajah dan beli desain di Creator Store,store,should,yes,no,
+Terbitkan desain ke Store dengan moderasi,store,should,yes,no,
+Bagi hasil kreator dan pencairan bulanan,store,should,yes,no,angka 75 persen vs fee 30 persen bertentangan di sumber
+Ulasan produk Store,store,could,yes,no,endpoint ada di halaman API yang kurang tepercaya
+Aset gift milik TikTok (animasi dan katalog),content,skip,yes,skip,milik TikTok; tidak boleh disalin
+Komunitas kreator dan isi Store mereka,network,skip,yes,skip,jaringan pengguna tidak bisa dikloning
+API publik developer,platform,skip,unknown,skip,halaman API di panduan terlihat seperti draf; tidak terverifikasi

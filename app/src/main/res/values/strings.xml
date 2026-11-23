@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kirim Layar</string>
+    <string name="subtitle">Tangkap layar, encode, kirim lewat RTMP atau simpan ke MP4.</string>
+
+    <string name="label_url">URL RTMP (termasuk stream key)</string>
+    <string name="hint_url">rtmp://127.0.0.1:1935/live/test</string>
+    <string name="label_show_url">Tampilkan URL</string>
+    <string name="label_quality">Kualitas</string>
+    <string name="label_fps">Frame rate</string>
+    <string name="label_bitrate">Bitrate video (kbps)</string>
+    <string name="hint_bitrate">Kosongkan untuk otomatis</string>
+    <string name="label_audio">Sumber audio</string>
+    <string name="audio_mic">Mikrofon</string>
+    <string name="audio_internal">Suara sistem atau game (Android 10+)</string>
+    <string name="audio_mix">Mikrofon + suara sistem (Android 10+)</string>
+    <string name="label_record">Rekam juga ke file MP4 di perangkat</string>
+
+    <string name="action_start">Mulai</string>
+    <string name="action_stop">Berhenti</string>
+
+    <string name="status_idle">Siap. Belum menyiarkan.</string>
+    <string name="status_starting">Menyiapkan encoder…</string>
+    <string name="status_live">Siaran berjalan. Bitrate: %1$d kbps</string>
+    <string name="status_recording">Merekam ke file (tanpa siaran).</string>
+    <string name="status_error">Gagal: %1$s</string>
+    <string name="status_record_path">Berkas: %1$s</string>
+
+    <string name="channel_name">Siaran layar</string>
+    <string name="notification_starting">Menyiapkan…</string>
+    <string name="notification_live">Menyiarkan layar</string>
+    <string name="notification_recording">Merekam layar</string>
+
+    <string name="error_need_target">Isi URL RTMP atau aktifkan rekam ke file.</string>
+    <string name="error_invalid_url">URL harus berbentuk rtmp://host/aplikasi/kunci</string>
+    <string name="error_mic_permission">Izin mikrofon diperlukan untuk menangkap audio.</string>
+    <string name="error_projection_denied">Izin tangkap layar ditolak.</string>
+    <string name="error_no_projection">Izin tangkap layar tidak diterima oleh layanan.</string>
+    <string name="error_encoder_prepare">Encoder tidak bisa disiapkan dengan setelan ini. Coba kualitas atau fps lebih rendah.</string>
+    <string name="error_connection">Tidak bisa terhubung ke server: %1$s</string>
+    <string name="error_auth">Server menolak autentikasi.</string>
+</resources>
