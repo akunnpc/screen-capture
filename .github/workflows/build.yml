@@ -1,0 +1,73 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build debug APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Kalau source dikirim dalam .zip (settings.gradle belum ada di root),
+      # ekstrak lalu pindahkan isi project ke root.
+      - name: Ekstrak zip kalau perlu
+        run: |
+          if [ ! -f settings.gradle.kts ] && [ ! -f settings.gradle ]; then
+            zip=$(find . -maxdepth 1 -name '*.zip' -print -quit)
+            if [ -z "$zip" ]; then
+              echo "::error::Tidak ada settings.gradle(.kts) dan tidak ada file .zip di root repo"
+              exit 1
+            fi
+            echo "Ekstrak $zip"
+            unzip -oq "$zip" -d _src
+            settings=$(find _src -name 'settings.gradle*' -print -quit)
+            if [ -z "$settings" ]; then
+              echo "::error::Di dalam zip tidak ada settings.gradle(.kts)"
+              exit 1
+            fi
+            cp -a "$(dirname "$settings")"/. .
+            rm -rf _src
+          fi
+          ls -la
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Pasang platform 36 dan build-tools
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+
+      # Gradle dipasang langsung (zip tidak membawa gradle-wrapper.jar).
+      # Versi 8.13 = pasangan resmi AGP 8.13.x.
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.13"
+
+      - name: Build APK debug
+        run: gradle --no-daemon assembleDebug --stacktrace
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: kirim-layar-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 14
+
+      # Unit test jalan setelah APK aman terupload; gagal test tidak membatalkan APK.
+      - name: Unit test
+        continue-on-error: true
+        run: gradle --no-daemon testDebugUnitTest --stacktrace
+        
